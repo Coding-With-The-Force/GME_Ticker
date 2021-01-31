@@ -5,7 +5,7 @@
 public with sharing class GME_Controller
 {
 	private static final String WSB_URL = 'https://www.reddit.com/r/wallstreetbets/hot.json?limit=20';
-	private static final String ALPHA_URL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GME&apikey=WG4ZVXDPRR1TBO5A';
+	private static final String ALPHA_URL = 'https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=GME&apikey=[youralphakey]';
 	private static final String GET = 'GET';
 
 	@AuraEnabled
