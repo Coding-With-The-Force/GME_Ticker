@@ -1,0 +1,56 @@
+<!--
+ - Created by gerry on 1/31/2021.
+ -->
+
+<!-- Gme Ticker -->
+<template>
+	<lightning-card  title="Hello You Beautiful Diamond Handed Autist!">
+		<lightning-button label="Should I Sell?" onclick={setOpenModal}></lightning-button>
+		<lightning-button class="slds-p-left_large" label="Refresh Price" onclick={retrieveGMEPrice}></lightning-button>
+		<lightning-button class="slds-p-left_large" label="Refresh Hot WSB Posts" onclick={retrieveWSBPosts}></lightning-button>
+	</lightning-card>
+	<lightning-tabset>
+		<lightning-tab label="GME Price">
+			<h1 class="horizontal">Current Price:</h1>
+			<h1 class="horizontal price_font">{gmePrice}</h1>
+			<p class="horizontal slds-p-top_xx-large">Disclaimer: This is just a stupid app, please don't consider this financial advice or believe that it is 100% accurate. The guy that made it just likes the stock.</p>
+		</lightning-tab>
+
+		<lightning-tab label="WSB Posts">
+			<lightning-datatable
+					key-field="id"
+					data={wsbPosts}
+					columns={columns}
+					hide-checkbox-column="true">
+			</lightning-datatable>
+		</lightning-tab>
+
+		<lightning-tab label="Crying Hedgefunders">
+			<h1 class="horizontal">Remember these same guys crashed the market intentionally in 2008</h1>
+			<a class="block slds-p-top_medium slds-p-left_medium" href="https://youtu.be/mI-nItz56Fs">Lee Cooperman Crying About Giving People COVID Relief</a>
+			<a class="block slds-p-top_medium slds-p-left_medium" href="https://finance.yahoo.com/news/billionaire-steve-cohen-quits-twitter-224215498.html">Steve Cohen Being Butthurt</a>
+		</lightning-tab>
+	</lightning-tabset>
+
+	<template if:true={openModal}>
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container">
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
+						<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+							<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+						</svg>
+						<span class="slds-assistive-text">Close</span>
+					</button>
+					<h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Hold Steady Brother, The Squeeze has not yet Squoze!</h2>
+				</header>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<p>KEEP THOSE DIAMOND HANDS STRONG!</p>
+				</div>
+				<footer class="slds-modal__footer">
+					<button class="slds-button slds-button_neutral" onclick={setCloseModal}>Cancel</button>
+				</footer>
+			</div>
+		</section>
+	</template>
+</template>
